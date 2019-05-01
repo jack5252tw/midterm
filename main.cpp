@@ -35,10 +35,10 @@ int main(void) {
     wait(0.5);
   }
   /////////////////////////////////////////////
-  int first = cnt[0]*4 + cnt[1]*2 + cnt[2]*1;
-  int second = cnt[3]*4 + cnt[4]*2 + cnt[5]*1;
-  int third = cnt[6]*4 + cnt[7]*2 + cnt[8]*1;
-  int fourth = cnt[9]*4 + cnt[10]*2 + cnt[11]*1;
+  int first = store[0]*4 + store[1]*2 + store[2]*1;
+  int second = store[3]*4 + store[4]*2 + store[5]*1;
+  int third = store[6]*4 + store[7]*2 + store[8]*1;
+  int fourth = store[9]*4 + store[10]*2 + store[11]*1;
   int sum = first+second+third+fourth;
   printf("%d\r\n",sum);
 }
