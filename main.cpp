@@ -21,8 +21,11 @@ int read_one_key(int key_num) {
 }
 
 int main(void) {
+  ////////////////////////////////////////////
   while (cnt <= 11) {
+
     int key = read_one_key(NUM_OF_KEY);
+    
     if (key != -1) {
       store[cnt] = key;
       cnt++;
@@ -31,4 +34,11 @@ int main(void) {
     
     wait(0.5);
   }
+  /////////////////////////////////////////////
+  int first = cnt[0]*4 + cnt[1]*2 + cnt[2]*1;
+  int second = cnt[3]*4 + cnt[4]*2 + cnt[5]*1;
+  int third = cnt[6]*4 + cnt[7]*2 + cnt[8]*1;
+  int fourth = cnt[9]*4 + cnt[10]*2 + cnt[11]*1;
+  int sum = first+second+third+fourth;
+  printf("%d\r\n",sum);
 }
