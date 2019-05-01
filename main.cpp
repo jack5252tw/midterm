@@ -2,6 +2,8 @@
 
 const int NUM_OF_KEY = 3;
 BusIn keyboard(D3, D4, D5);
+int store[12];
+int cnt = 0;
 
 Serial pc(USBTX, USBRX);
 
@@ -19,16 +21,14 @@ int read_one_key(int key_num) {
 }
 
 int main(void) {
-  while (1) {
+  while (cnt <= 11) {
     int key = read_one_key(NUM_OF_KEY);
-
-    if (key == -1) {
-      pc.printf("No key is pressed. \r\n");
+    if (key != -1) {
+      store[cnt] = key;
+      cnt++;
+      printf(%d\r\n,key);
     }
-    else {
-      pc.printf("The key is pressed: %d\r\n", key);
-    }
-
+    
     wait(0.5);
   }
 }
