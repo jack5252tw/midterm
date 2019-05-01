@@ -56,15 +56,16 @@ int main(void) {
   out[0] = 0;
   out[1] = 0;
   out[2] = 0;
+  int tmp = sum;
 
-  if(sum >= 16){
+  if(tmp >= 16){
       out[3] = 1;
   }
   else{
       out[3] = 0;
   }
 
-  int tmp = sum-out[0]*16;
+  tmp = sum-out[3]*16;
   if( tmp >= 8){
       out[4] = 1;
   }
@@ -72,7 +73,7 @@ int main(void) {
       out[4] = 0;
   }
 
-  tmp = tmp-out[1]*8;
+  tmp = tmp-out[4]*8;
   if( tmp >= 4){
       out[5] = 1;
   }
@@ -80,7 +81,7 @@ int main(void) {
       out[5] = 0;
   }
 
-  tmp = tmp-out[2]*4;
+  tmp = tmp-out[5]*4;
   if( tmp >= 2){
       out[6] = 1;
   }
@@ -88,7 +89,7 @@ int main(void) {
       out[6] = 0;
   }
   
-  tmp = tmp-out[3]*2;
+  tmp = tmp-out[6]*2;
   if( tmp >= 1){
       out[7] = 1;
   }
