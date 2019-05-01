@@ -1,4 +1,5 @@
 #include "mbed.h"
+#include "uLCD_4DGL.h"
 
 const int NUM_OF_KEY = 3;
 BusIn keyboard(D3, D4, D5);
@@ -7,6 +8,7 @@ int cnt = 0;
 int tmpkey = -1;
 
 Serial pc(USBTX, USBRX);
+uLCD_4DGL uLCD(D1, D0, D2); // serial tx, serial rx, reset pin;
 
 // Return a key number whose corresponding hardware key is being pressed.
 int read_one_key(int key_num) {
@@ -23,6 +25,10 @@ int read_one_key(int key_num) {
 
 int main(void) {
   ////////////////////////////////////////////
+  uLCD.background_color(BLUE);
+    uLCD.cls();
+    uLCD.color(WHITE);
+    uLCD.textbackground_color(BLUE);
   while (cnt <= 11) {
 
     int key = read_one_key(NUM_OF_KEY);
@@ -96,8 +102,19 @@ int main(void) {
   else{
       out[7] = 0;
   }
+  /*
   for(int w = 0; w<8;w++){
     printf("%d\r\n",out[w]);
   }
+  */
+  uLCD.locate(1,2);
+  uLCD.printf("0b%D",out[0]);
+  uLCD.printf("%D",out[1]);
+  uLCD.printf("%D",out[2]);
+  uLCD.printf("%D",out[3]);
+  uLCD.printf("%D",out[4]);
+  uLCD.printf("%D",out[5]);
+  uLCD.printf("%D",out[6]);
+  uLCD.printf("%D",out[7]);
 
 }
