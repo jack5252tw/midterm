@@ -4,6 +4,7 @@ const int NUM_OF_KEY = 3;
 BusIn keyboard(D3, D4, D5);
 int store[12];
 int cnt = 0;
+int tmpkey = -1;
 
 Serial pc(USBTX, USBRX);
 
@@ -27,9 +28,18 @@ int main(void) {
     int key = read_one_key(NUM_OF_KEY);
     
     if (key != -1) {
-      store[cnt] = key;
+
+      if(tmpkey == key){
+        store[cnt-1] = 0;
+        cnt--;
+      }
+      else{
+        tmpkey = key;
+        store[cnt] = 1;
+      }
+      
+      printf("%d\r\n",store[cnt]);
       cnt++;
-      printf("%d\r\n",key);
     }
     
     wait(0.5);
@@ -42,7 +52,7 @@ int main(void) {
   int sum = first+second+third+fourth;
   printf("%d\r\n",sum);
   ////////////////////////////
-  int out[8];
+  int out[8] = {0,0,0,0,0,0,0,0};
   out[0] = 0;
   out[1] = 0;
   out[2] = 0;
@@ -85,7 +95,8 @@ int main(void) {
   else{
       out[7] = 0;
   }
-  for(int z = 0; z <8; z++){
-    printf("%d",out[z]);
+  for(int w = 0; w<8;w++){
+    printf("%d\r\n",out[w]);
   }
+
 }
