@@ -26,7 +26,7 @@ int main(void) {
     if (key != -1) {
       store[cnt] = key;
       cnt++;
-      printf(%d\r\n,key);
+      printf("%d\r\n",key);
     }
     
     wait(0.5);
